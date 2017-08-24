@@ -7,7 +7,8 @@ var octo
 
 module.exports = function (users, opts) {
   octo = new Octokat({
-    token: opts && opts.token || process.env.GITHUB_OGN_TOKEN
+    token: opts && opts.token || process.env.GITHUB_OGN_TOKEN,
+    rootURL: (opts && opts.endpoint) ? opts.endpoint : null
   })
 
   if (typeof users !== 'string') {
