@@ -1,5 +1,7 @@
 # get-github-user [![Build Status](https://travis-ci.org/RichardLitt/get-github-user.svg?branch=master)](https://travis-ci.org/RichardLitt/get-github-user)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/RichardLitt/get-github-user.svg)](https://greenkeeper.io/)
+
 > Get GitHub user information from just a username
 
 
