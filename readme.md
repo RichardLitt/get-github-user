@@ -9,7 +9,7 @@
 $ npm install --save get-github-user
 ```
 
-You also need to get a GitHub application token: https://github.com/settings/tokens. Provide it in the CLI or set it as `$GITHUB_OGN_TOKEN` somewhere in your bash_profile.
+You also need to get a GitHub application token: https://github.com/settings/tokens. Provide it in the CLI or set it as `$GITHUB_TOKEN` somewhere in your bash_profile.
 
 ## Usage
 
@@ -19,7 +19,6 @@ const getGithubUser = require('get-github-user');
 getGithubUser('RichardLitt');
 //=> [{login: 'RichardLitt', ...}]
 ```
-
 
 ## API
 
@@ -31,6 +30,18 @@ Type: `string` or `array`
 
 The user or array of users you want user objects for.
 
+#### token
+
+Type: token
+
+Send in your GitHub token.
+
+#### endpoint
+
+Type: `string`
+
+Send in your GitHub Enterprise endpoint or rootURL.
+
 ## CLI
 
 ```
@@ -41,15 +52,22 @@ $ npm install --global get-github-user
 $ get-github-user --help
 
   Usage
-    get-github-user [input]
+    $ get-github-user [input]
+
+  Options
+    -t, --token A token
+    -e, --endpoint Change the GitHub endpoint
 
   Examples
     $ get-github-user RichardLitt
-    [{ login: 'RichardLitt', ... }]
+    [{ login: 'RichardLitt',  ... }]
     $ get-github-user RichardLitt jbenet
-    [{ login: 'RichardLitt', ...}, { login: 'jbenet', ...}]'
+    [{...}, {...}]
 ```
 
+## Contribute
+
+Please do! Open an issue or a pull request if you see anything. 
 
 ## License
 

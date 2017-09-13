@@ -11,7 +11,7 @@ const cli = meow([`
 
   Options
     -t, --token A token
-    -e, --enterprise Change the GitHub endpoint (for Enterprise)
+    -e, --endpoint Change the GitHub endpoint
 
   Examples
     $ get-github-user RichardLitt
@@ -21,7 +21,8 @@ const cli = meow([`
 `], {
   alias: {
     t: 'token',
-    e: 'enterprise'
+    e: 'endpoint',
+    rootURL: 'endpoint'
   }
 })
 
@@ -30,11 +31,11 @@ const authOptions = {
   note: 'Get GitHub user information from just a username',
   userAgent: 'ghUser',
   scope: ['user'],
-  promptName: (cli.flags.e) ? 'GitHub Enterprise' : null
+  promptName: (cli.flags.e) ? 'GitHub endpoint' : null
 }
 
 if (cli.flags.token) {
-  getGithubUser(cli.input, { token: cli.flags.token })
+  getGithubUser(cli.input, { token: cli.flags.token, endpoint: cli.flags.endpoint })
   .then((response) => console.log(response))
   .catch((err) => console.log('Unable to use passed token', err))
 } else {

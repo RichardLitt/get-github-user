@@ -6,9 +6,15 @@ const isArray = require('is-array')
 var octo
 
 module.exports = function (users, opts) {
+  opts = opts || {}
+  // Because Octokat is different than gh-get, and I forget which I use
+  if (!opts.endpoint && opts.rootURL) {
+    opts.endpoint = opts.rootURL
+  }
+
   octo = new Octokat({
-    token: opts && opts.token || process.env.GITHUB_OGN_TOKEN,
-    rootURL: (opts && opts.endpoint) ? opts.endpoint : null
+    token: opts.token || process.env.GITHUB_TOKEN,
+    rootURL: opts.endpoint
   })
 
   if (typeof users !== 'string') {
