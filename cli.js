@@ -36,11 +36,11 @@ const authOptions = {
 
 if (cli.flags.token) {
   getGithubUser(cli.input, { token: cli.flags.token, endpoint: cli.flags.endpoint })
-  .then((response) => console.log(response))
-  .catch((err) => console.log('Unable to use passed token', err))
+    .then((response) => console.log(response))
+    .catch((err) => console.log('Unable to use passed token', err))
 } else {
   Promise.try(() => ghauth(authOptions))
-  .then((authData) => getGithubUser(cli.input, authData))
-  .then((response) => console.log(response))
-  .catch((err) => console.log('Unable to use ghAuth', err))
+    .then((authData) => getGithubUser(cli.input, authData))
+    .then((response) => console.log(response))
+    .catch((err) => console.log('Unable to use ghAuth', err))
 }

@@ -9,13 +9,13 @@ test(t => {
 
 test(t => {
   return fn('wkjhfw9a987sya323jkbsd7822dfsa').then(result => {
-    t.same(result, [])
+    t.deepEqual(result, [])
   })
 })
 
 test(t => {
   return fn(['wkjhfw9a987sya323jkbsd7822dfsa', 'RichardLitt']).then(result => {
-    t.same(result, [])
+    t.deepEqual(result, [])
   })
 })
 
@@ -25,4 +25,3 @@ test(t => {
     t.is(result[1].login, 'sindresorhus')
   })
 })
-

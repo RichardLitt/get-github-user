@@ -30,7 +30,7 @@ module.exports = function (users, opts) {
   }).then(function (users) {
     return users
   }).catch(function (err) {
-    if (err.status === 404) {
+    if (err.message.indexOf('Status: 404') !== -1) {
       return []
     } else {
       throw ('Could not get GitHub user', err)
