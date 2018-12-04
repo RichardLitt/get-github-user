@@ -25,15 +25,26 @@ module.exports = function (users, opts) {
     users = [users]
   }
 
+  function is404 (err) {
+    return err.message.indexOf('Status: 404') !== -1
+  }
+
   return Promise.map(users, function (user) {
     return octo.users(user).fetch()
-  }).then(function (users) {
-    return users
-  }).catch(function (err) {
-    if (err.message.indexOf('Status: 404') !== -1) {
+      .then(null, (err) => {
+        if (is404(err)) {
+          return {
+            'user': user,
+            'validUser': false
+          }
+        }
+      })
+  }).then((users) => {
+    return users.filter(user => user.validUser !== false)
+  }).catch((err) => {
+    if (is404(err)) {
       return []
-    } else {
-      throw ('Could not get GitHub user', err)
     }
+    throw ('Could not get GitHub user', err)
   })
 }
