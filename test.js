@@ -26,3 +26,7 @@ test('Returns all data for multiple users', t => {
     t.is(result[1].login, 'sindresorhus')
   })
 })
+
+test('Throws if there is a bad token', async t => {
+  await t.throws(fn('OpenSourceDesign', { token: 'sfsafss' }), 'Bad credentials.')
+})

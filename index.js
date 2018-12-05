@@ -3,7 +3,6 @@
 const Octokat = require('octokat')
 const Promise = require('bluebird')
 const isArray = require('is-array')
-var octo
 
 module.exports = function (users, opts) {
   opts = opts || {}
@@ -12,7 +11,7 @@ module.exports = function (users, opts) {
     opts.endpoint = opts.rootURL
   }
 
-  octo = new Octokat({
+  var octo = new Octokat({
     token: opts.token || process.env.GITHUB_TOKEN,
     rootURL: opts.endpoint
   })
@@ -32,6 +31,9 @@ module.exports = function (users, opts) {
   return Promise.map(users, function (user) {
     return octo.users(user).fetch()
       .then(null, (err) => {
+        if (err.message.indexOf('Bad credentials') !== -1) {
+          throw new Error(`Bad credentials.`)
+        }
         if (is404(err)) {
           return {
             'user': user,
