@@ -42,7 +42,7 @@ module.exports = function (users, opts) {
         }
       })
   }).then((users) => {
-    return users.filter(user => user.validUser !== false)
+    return users.filter(user => user && user.validUser !== false)
   }).catch((err) => {
     if (is404(err)) {
       return []

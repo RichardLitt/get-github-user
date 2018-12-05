@@ -13,6 +13,12 @@ test('Returns an empty array for an invalid user', t => {
   })
 })
 
+test('Returns an empty array for an valid user with the wrong endpoint', t => {
+  return fn('RichardLitt', { endpoint: 'Skdjflsdjfls' }).then(result => {
+    t.deepEqual(result, [])
+  })
+})
+
 test('Returns only valid information for an array with one invalid user', t => {
   return fn(['wkjhfw9a987sya323jkbsd7822dfsa', 'RichardLitt']).then(result => {
     t.deepEqual(result[0].login, 'RichardLitt')
