@@ -34,6 +34,8 @@ const authOptions = {
   promptName: (cli.flags.e) ? 'GitHub endpoint' : null
 }
 
+cli.flags.token = cli.flags.token || process.env.GITHUB_TOKEN
+
 if (cli.flags.token) {
   getGithubUser(cli.input, { token: cli.flags.token, endpoint: cli.flags.endpoint })
     .then((response) => console.log(response))
