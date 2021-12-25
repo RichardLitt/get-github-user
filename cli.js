@@ -27,6 +27,7 @@ const cli = meow([`
 })
 
 const authOptions = {
+  clientId: 'bfec45dffc45ea593ead',
   configName: 'getGithubUser',
   note: 'Get GitHub user information from just a username',
   userAgent: 'ghUser',
