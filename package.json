@@ -35,7 +35,7 @@
     "bluebird": "^3.1.1",
     "ghauth": "^5.0.1",
     "is-array": "^1.0.1",
-    "meow": "^10.1.2",
+    "meow": "^11.0.0",
     "octokat": "^0.10.0"
   },
   "devDependencies": {
